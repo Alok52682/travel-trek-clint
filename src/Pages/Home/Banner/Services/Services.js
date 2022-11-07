@@ -26,8 +26,8 @@ const Services = () => {
                                         <h2 className="card-title">{service.title}</h2>
                                     </div>
                                     <div className="card-actions justify-between items-center h-1/2">
-                                        <p>Price: ${service.price}</p>
-                                        <button className="btn btn-primary">Learn now!</button>
+                                        <p className='font-semibold text-emerald-600'>Price: ${service.price}</p>
+                                        <button className="btn btn-success">Learn now!</button>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@ const Services = () => {
                     })
                 }
             </div>
-            <Link to='/services' className="btn btn-outline btn-primary">see all</Link>
+            <Link to='/services' className="btn btn-outline btn-success">see all</Link>
         </div>
     );
 };
