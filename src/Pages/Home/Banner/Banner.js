@@ -13,7 +13,7 @@ const Banner = () => {
                 <div className='md:w-2/3 my-6 text-emerald-700 font-bold'>
                     <p>Though we travel the world over to find the beautiful, we must carry it with us, or we find it not.</p>
                 </div>
-                <Link to='/services' className="btn btn-outline btn-primary mb-5">Explore more<FaArrowRight className='md:ml-2' /></Link>
+                <Link to='/services' className="btn btn-success mb-5">Explore more<FaArrowRight className='md:ml-2' /></Link>
             </div>
             <div>
                 <img src="https://i.ibb.co/S3G6NnQ/banner-image.png" alt="" />
