@@ -6,14 +6,7 @@ const Navber = () => {
 
 
     const navItems = <>
-        <li className='font-semibold mr-3'><NavLink
-            className={({ isActive }) =>
-                isActive ? 'bg-emerald-500 text-white' : 'text-emerald-500'
-            } to='/home'>Home</NavLink></li>
-        <li className='font-semibold mr-3'><NavLink
-            className={({ isActive }) =>
-                isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
-            } to='/about'>About</NavLink></li>
+
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
@@ -22,6 +15,10 @@ const Navber = () => {
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
             } to='/orders'>Orders</NavLink></li>
+        <li className='font-semibold mr-3'><NavLink
+            className={({ isActive }) =>
+                isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
+            } to='/about'>About</NavLink></li>
         {
             <li className='font-semibold mr-3'><NavLink
                 className={({ isActive }) =>
