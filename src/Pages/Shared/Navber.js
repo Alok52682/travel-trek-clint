@@ -8,24 +8,24 @@ const Navber = () => {
     const navItems = <>
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
-                isActive ? 'bg-sky-500 text-white' : undefined
+                isActive ? 'bg-emerald-500 text-white' : 'text-emerald-500'
             } to='/home'>Home</NavLink></li>
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
-                isActive ? 'bg-sky-500 text-white' : undefined
+                isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
             } to='/about'>About</NavLink></li>
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
-                isActive ? 'bg-sky-500 text-white' : undefined
+                isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
             } to='/services'>Services</NavLink></li>
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
-                isActive ? 'bg-sky-500 text-white' : undefined
+                isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
             } to='/orders'>Orders</NavLink></li>
         {
             <li className='font-semibold mr-3'><NavLink
                 className={({ isActive }) =>
-                    isActive ? 'bg-sky-500 text-white' : undefined
+                    isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
                 } to='/login'>Log In</NavLink></li>
 
         }
@@ -51,7 +51,7 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn btn-outline btn-info font-bold">name</Link>
+                <Link className="btn bg-white border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white hover:border-none font-bold">name</Link>
             </div>
         </div>
     );
