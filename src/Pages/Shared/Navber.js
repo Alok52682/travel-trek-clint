@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { authContext } from '../../Context/AuthProvider';
 
 const Navber = () => {
+    const { user, logOut } = useContext(authContext);
 
-
-
+    const handelLogOut = () => {
+        logOut()
+            .then(() => { }).catch(err => { })
+    }
     const navItems = <>
 
         <li className='font-semibold mr-3'><NavLink
@@ -18,14 +22,8 @@ const Navber = () => {
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
-            } to='/about'>About</NavLink></li>
-        {
-            <li className='font-semibold mr-3'><NavLink
-                className={({ isActive }) =>
-                    isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
-                } to='/login'>Log In</NavLink></li>
+            } to='/about'>Blog</NavLink></li>
 
-        }
     </>
     return (
         <div className="navbar h-20 mb-12 pt-12 bg-base-100">
@@ -48,7 +46,26 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn bg-white border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-white hover:border-none font-bold">name</Link>
+                {!user?.uid ?
+                    <Link to='/login' className="btn btn-ghost  text-emerald-500">Log In</Link>
+                    :
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img title={user?.displayName} src={user?.photoURL ? user?.photoURL : 'https://conference.pecb.com/wp-content/uploads/2017/10/no-profile-picture.jpg'} alt='Profile' />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                            <li>
+                                <Link className="justify-between">
+                                    {user?.displayName}
+                                </Link>
+                            </li>
+                            <li><Link>Settings</Link></li>
+                            <li><Link onClick={handelLogOut}>Log Out</Link></li>
+                        </ul>
+                    </div>
+                }
             </div>
         </div>
     );
