@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MyReviewItem = ({ review, handelDelete }) => {
+const MyReviewItem = ({ review, handelDelete, update }) => {
     const { date, name, reaction, time, _id, serviceTitle, serviceiimage, } = review;
+
     return (
         <tr>
             <th>
@@ -28,9 +30,9 @@ const MyReviewItem = ({ review, handelDelete }) => {
                 <span className="badge badge-ghost badge-sm">{name}</span>
             </td>
             <th>
-                <button className="btn btn-ghost btn-xs">details</button>
+                <Link className='btn btn-ghost' onClick={() => update(review)} >update</Link>
             </th>
-        </tr>
+        </tr >
     );
 };
 
