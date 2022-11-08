@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
@@ -65,6 +66,9 @@ const ServiceDetails = () => {
 
     return (
         <div className='w-10/12 mx-auto my-10'>
+            <Helmet>
+                <title>Travel treck - Service Details</title>
+            </Helmet>
             <div className="card md:card-side bg-base-100 shadow-xl mb-10">
                 <div className='md:w-5/12'><img src={image} className='w-full h-full md:rounded-l-xl' alt="Album" /></div>
                 <div className="card-body md:w-7/12">

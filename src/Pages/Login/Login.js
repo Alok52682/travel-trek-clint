@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
@@ -75,6 +76,9 @@ const Login = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Travel treck - Log In</title>
+            </Helmet>
             <div className='py-6'>
                 <div className="flex overflow-hidden mx-auto max-w-sm lg:max-w-4xl gap-4 items-center justify-center p-10">
                     <div className="w-full p-8 lg:w-1/2 border shadow-xl rounded-xl">

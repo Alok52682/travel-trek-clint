@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const Blogs = () => {
     return (
         <div className='w-10/12 mx-auto'>
+            <Helmet>
+                <title>Travel treck - Blogs</title>
+            </Helmet>
             <div className='border-4 p-3 lg:p-10 border-emerald-400 rounded-2xl my-5'>
                 <div className='mb-4'>
                     <img src="https://i.ibb.co/42jkQVZ/maxresdefault.jpg" className='w-full lg:w-3/12' alt="" />

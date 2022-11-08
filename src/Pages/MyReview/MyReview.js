@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import toast from 'react-hot-toast';
 import { authContext } from '../../Context/AuthProvider';
 import MyReviewItem from './MyReviewItem';
@@ -74,6 +75,9 @@ const MyReview = () => {
 
     return (
         <div className='w-10/12 mx-auto'>
+            <Helmet>
+                <title>Travel treck - My Reviews</title>
+            </Helmet>
             <h2 className='text-emerald-700 font-extrabold text-2xl md:text-4xl text-center my-10'>MY Reviews : {reviews?.length}</h2>
             <div className="overflow-x-auto">
                 <div className="overflow-x-auto w-full">

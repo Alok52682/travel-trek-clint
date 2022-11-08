@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
 
@@ -23,6 +24,9 @@ const Register = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Travel treck - Register</title>
+            </Helmet>
             <div className='py-6'>
                 <div className="flex overflow-hidden mx-auto max-w-sm lg:max-w-4xl gap-4 items-center justify-center p-10">
                     <div className="w-full p-8 lg:w-1/2 border shadow-xl rounded-xl">
