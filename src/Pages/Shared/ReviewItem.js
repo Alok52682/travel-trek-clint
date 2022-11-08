@@ -5,12 +5,6 @@ const ReviewItem = ({ review, handelDelete }) => {
 
     return (
         <tr>
-            <th>
-                <label>
-                    <button onClick={() => handelDelete(_id)} className='btn btn-error'>X</button>
-                </label>
-            </th>
-
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -29,10 +23,10 @@ const ReviewItem = ({ review, handelDelete }) => {
             </td>
             <th>
                 <div className="dropdown dropdown-left dropdown-end">
-                    <label tabIndex={0} className="btn m-1">Click</label>
+                    <label tabIndex={0} className="btn btn-ghost">Option</label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li className='z-10'><button>Item 1</button></li>
-                        <li><button>Item 2</button></li>
+                        <li className='z-10'><button onClick={() => handelDelete(_id)} className='btn btn-error'>delete</button></li>
+                        <li><button className='btn btn-success mt-1'>demo</button></li>
                     </ul>
                 </div>
             </th>

@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
 import ReviewItem from '../Shared/ReviewItem';
 
 const ServiceDetails = () => {
     const { title, place, price, image, description, _id } = useLoaderData();
     const { user } = useContext(authContext);
+    const location = useLocation()
     const [reviews, setReviews] = useState([]);
     const [render, setRender] = useState(false);
 
@@ -104,7 +105,6 @@ const ServiceDetails = () => {
                                         <table className="table w-full lg:w-8/4">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
                                                     <th>Review</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -126,7 +126,7 @@ const ServiceDetails = () => {
                         :
                         <div className='text-center'>
                             <h2 className='text-emerald-700 font-extrabold text-xl md:text-2xl my-10'>Please login to add a review</h2>
-                            <Link to='/login' className='btn btn-outline btn-accent'>Login</Link>
+                            <Link to='/login' state={{ from: location }} replace className='btn btn-outline btn-accent'>Login</Link>
                         </div>
                 }
 

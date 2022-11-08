@@ -35,17 +35,12 @@ const MyReview = () => {
     }
 
     return (
-        <div>
+        <div className='w-10/12 mx-auto'>
             <h2 className='text-emerald-700 font-extrabold text-2xl md:text-4xl text-center my-10'>MY Reviews : {reviews?.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
                             <th>Review</th>
                             <th>Action</th>
                         </tr>

@@ -26,7 +26,7 @@ const Navber = () => {
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
-            } to='/about'>Blog</NavLink></li>
+            } to='/blogs'>Blogs</NavLink></li>
 
     </>
     return (
