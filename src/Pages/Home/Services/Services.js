@@ -30,7 +30,7 @@ const Services = () => {
                                         <p>{service.description.slice(0, 100) + '...'}</p>
                                     </div>
                                     <div className="card-actions justify-between items-center mb-3">
-                                        <p className='font-semibold text-emerald-600'>Price: ${service.price}</p>
+                                        <p className='font-semibold text-emerald-600'>Charge: ${service.price}</p>
                                         <Link to={`service/${service._id}`} className="btn btn-success">View details</Link>
                                     </div>
                                 </div>

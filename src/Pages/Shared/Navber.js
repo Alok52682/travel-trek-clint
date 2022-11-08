@@ -18,7 +18,7 @@ const Navber = () => {
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
-            } to='/orders'>Orders</NavLink></li>
+            } to='/addservice'>Add Service</NavLink></li>
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
@@ -52,7 +52,7 @@ const Navber = () => {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img title={user?.displayName} src={user?.photoURL ? user?.photoURL : 'https://conference.pecb.com/wp-content/uploads/2017/10/no-profile-picture.jpg'} alt='Profile' />
+                                <img src={user?.photoURL} alt='Profile' />
                             </div>
                         </label>
                         <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">

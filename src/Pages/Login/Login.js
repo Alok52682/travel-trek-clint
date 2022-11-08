@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
 
 const Login = () => {
-    const { handleForgetPass, userLogIn } = useContext(authContext);
+    const { handleForgetPass, userLogIn, signWithGoogle } = useContext(authContext);
     const location = useLocation()
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -23,6 +23,14 @@ const Login = () => {
             .catch(err => alert(err.messege))
     }
 
+    const googleLogIn = () => {
+        signWithGoogle()
+            .then(result => {
+                navigate(from, { replace: true });
+            })
+            .catch(err => alert(err.messege))
+    }
+
     const handleEmailBlur = (event) => {
         const email = event.target.value;
         setEmail(email);
@@ -34,7 +42,7 @@ const Login = () => {
                     <div className="w-full p-8 lg:w-1/2 border shadow-xl rounded-xl">
                         <h2 className="text-2xl font-bold text-emerald-600 text-center">Travel track</h2>
                         <p className="text-xl text-gray-600 text-center">Welcome back!</p>
-                        <Link className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md bg-emerald-100">
+                        <Link onClick={googleLogIn} className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md bg-emerald-100">
                             <div className="md:px-4 py-3">
                                 <img src={`https://cdn-icons-png.flaticon.com/512/2991/2991148.png`} alt='Google' className='w-5' />
                             </div>

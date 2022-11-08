@@ -12,7 +12,7 @@ const ServiceDetails = () => {
                     <h2 className="card-title text-4xl">{title}</h2>
                     <div className='my-5'>
                         <p className='text-2xl text-emerald-600 font-bold'>{place}</p>
-                        <p className='text-emerald-600 text-2xl font-bold md:my-5'>Price: ${price}</p>
+                        <p className='text-emerald-600 text-2xl font-bold md:my-5'>Charge: ${price}</p>
                     </div>
                     <div className="card-actions">
                         <p className=''>{description}</p>

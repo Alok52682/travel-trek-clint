@@ -10,6 +10,7 @@ const Allservices = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
+
     return (
         <div className='md:grid grid-cols-3 gap-4 mt-5 m-5'>
             {
@@ -26,7 +27,7 @@ const Allservices = () => {
                                     <p>{service.description.slice(0, 100) + '...'}</p>
                                 </div>
                                 <div className="card-actions justify-between items-center mb-3">
-                                    <p className='font-semibold text-emerald-600'>Price: ${service.price}</p>
+                                    <p className='font-semibold text-emerald-600'>Charge: ${service.price}</p>
                                     <Link to={`service/${service._id}`} className="btn btn-success">View details</Link>
                                 </div>
                             </div>
