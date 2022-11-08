@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
 
@@ -17,8 +18,26 @@ const Login = () => {
 
         userLogIn(email, password)
             .then(result => {
-                console.log(result.user);
-                navigate(from, { replace: true });
+                const user = result.user;
+
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
+                // getting jwt token by fetch
+                fetch('http://localhost:4000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token);
+                        toast.success('Log in successfully')
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(err => alert(err.messege))
     }
@@ -26,7 +45,26 @@ const Login = () => {
     const googleLogIn = () => {
         signWithGoogle()
             .then(result => {
-                navigate(from, { replace: true });
+                const user = result.user;
+
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
+                // getting jwt token by fetch
+                fetch('http://localhost:4000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token);
+                        toast.success('Log in successfully')
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(err => alert(err.messege))
     }
