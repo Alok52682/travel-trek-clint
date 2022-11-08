@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [services, setServices] = useState();
 
     useEffect(() => {
-        fetch('Services.json')
+        fetch(`http://localhost:4000/services?size=${3}`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -17,17 +19,19 @@ const Services = () => {
                 {
                     services && services.map(service => {
                         return (
-                            <div key={service.id} className="card glass text-start rounded-sm mb-5">
-                                <div className='h-4/6'>
-                                    <img src={service.image} className='h-full w-full rounded-tl-sm rounded-tr-sm' alt="car!" />
-                                </div>
-                                <div className="card-body h-2/6">
-                                    <div className='h-1/2'>
+                            <div key={service._id} className="card glass text-start rounded-sm mb-5">
+                                <PhotoProvider className='h-3/5'>
+                                    <PhotoView src={service.image}>
+                                        <img src={service.image} className='h-full w-full rounded-tl-sm rounded-tr-sm' alt="car!" /></PhotoView>
+                                </PhotoProvider>
+                                <div className="card-body h-2/5">
+                                    <div className=''>
                                         <h2 className="card-title">{service.title}</h2>
+                                        <p>{service.description.slice(0, 100) + '...'}</p>
                                     </div>
-                                    <div className="card-actions justify-between items-center h-1/2">
+                                    <div className="card-actions justify-between items-center mb-3">
                                         <p className='font-semibold text-emerald-600'>Price: ${service.price}</p>
-                                        <button className="btn btn-success">Learn now!</button>
+                                        <Link to={`service/${service._id}`} className="btn btn-success">View details</Link>
                                     </div>
                                 </div>
                             </div>
