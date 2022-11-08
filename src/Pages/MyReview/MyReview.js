@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { authContext } from '../../Context/AuthProvider';
-import ReviewItem from '../Shared/ReviewItem';
+import MyReviewItem from './MyReviewItem';
 
 const MyReview = () => {
     const { user } = useContext(authContext);
@@ -38,19 +38,26 @@ const MyReview = () => {
         <div className='w-10/12 mx-auto'>
             <h2 className='text-emerald-700 font-extrabold text-2xl md:text-4xl text-center my-10'>MY Reviews : {reviews?.length}</h2>
             <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>Review</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            reviews && reviews.map(review => <ReviewItem key={review._id} review={review} handelDelete={handelDelete} />)
-                        }
-                    </tbody>
-                </table>
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>
+
+                                </th>
+                                <th>Service Name</th>
+                                <th>Reviews</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                reviews && reviews.map(review => <MyReviewItem key={review._id} review={review} handelDelete={handelDelete} />)
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </div>
     );

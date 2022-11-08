@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
-import ReviewItem from '../Shared/ReviewItem';
+import ReviewItem from './ReviewItem';
 
 const ServiceDetails = () => {
     const { title, place, price, image, description, _id } = useLoaderData();
@@ -21,6 +21,8 @@ const ServiceDetails = () => {
             const reaction = e.target.review.value;
             const review = {
                 serviceId: _id,
+                serviceTitle: title,
+                serviceiimage: image,
                 userAvater: user?.photoURL,
                 userEmail: user?.email,
                 reaction,
@@ -61,23 +63,6 @@ const ServiceDetails = () => {
             })
     }, [_id, render])
 
-    const handelDelete = id => {
-        const agree = window.confirm('Are you sure you want to delete this review?');
-        if (agree) {
-            fetch(`http://localhost:4000/reviews/${id}`, {
-                method: "DELETE"
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount) {
-                        toast.success('Deleted Successfully');
-                        const remaining = reviews.filter(rev => rev._id !== id);
-                        setReviews(remaining);
-                    }
-                })
-                .catch(err => console.log(err))
-        }
-    }
     return (
         <div className='w-10/12 mx-auto my-10'>
             <div className="card md:card-side bg-base-100 shadow-xl mb-10">
@@ -106,12 +91,11 @@ const ServiceDetails = () => {
                                             <thead>
                                                 <tr>
                                                     <th>Review</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {
-                                                    reviews && reviews.map(review => <ReviewItem key={review._id} review={review} handelDelete={handelDelete} />)
+                                                    reviews && reviews.map(review => <ReviewItem key={review._id} review={review} />)
                                                 }
                                             </tbody>
                                         </table>
