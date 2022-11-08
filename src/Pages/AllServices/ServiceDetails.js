@@ -1,12 +1,85 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { Link, useLoaderData } from 'react-router-dom';
+import { authContext } from '../../Context/AuthProvider';
+import ReviewItem from '../Shared/ReviewItem';
 
 const ServiceDetails = () => {
-    const { title, place, price, image, description } = useLoaderData();
+    const { title, place, price, image, description, _id } = useLoaderData();
+    const { user } = useContext(authContext);
+    const [reviews, setReviews] = useState([]);
+    const [render, setRender] = useState(false);
 
+    const handelReview = e => {
+        e.preventDefault();
+
+        if (user?.uid) {
+            const current = new Date();
+            const time = current.getHours() + ':' + current.getMinutes() + ":" + current.getSeconds();
+            const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+            const reaction = e.target.review.value;
+            const review = {
+                serviceId: _id,
+                userAvater: user?.photoURL,
+                userEmail: user?.email,
+                reaction,
+                name: user?.displayName,
+                time,
+                date
+            }
+            fetch('http://localhost:4000/reviews/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(review),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.acknowledged) {
+                        toast.success('Review added successfully.');
+                        e.target.reset();
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+        else {
+            toast.error('You must login first to leave a review')
+        }
+
+    }
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/reviews/${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                setReviews(data)
+                setRender(!render)
+            })
+    }, [_id, render])
+
+    const handelDelete = id => {
+        const agree = window.confirm('Are you sure you want to delete this review?');
+        if (agree) {
+            fetch(`http://localhost:4000/reviews/${id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        toast.success('Deleted Successfully');
+                        const remaining = reviews.filter(rev => rev._id !== id);
+                        setReviews(remaining);
+                    }
+                })
+                .catch(err => console.log(err))
+        }
+    }
     return (
         <div className='w-10/12 mx-auto my-10'>
-            <div className="card md:card-side bg-base-100 shadow-xl">
+            <div className="card md:card-side bg-base-100 shadow-xl mb-10">
                 <div className='md:w-5/12'><img src={image} className='w-full h-full md:rounded-l-xl' alt="Album" /></div>
                 <div className="card-body md:w-7/12">
                     <h2 className="card-title text-4xl">{title}</h2>
@@ -18,6 +91,45 @@ const ServiceDetails = () => {
                         <p className=''>{description}</p>
                     </div>
                 </div>
+            </div>
+            <div>
+                <h2 className='text-emerald-700 font-extrabold text-2xl md:text-4xl text-center my-10'>Reviews</h2>
+                {
+                    user?.uid ? <div className='lg:flex gap-4'>
+                        <div className='lg:w-8/12'>
+                            {
+                                !reviews?.length ? <h2 className='text-3xl'>No Review posted yet</h2>
+                                    :
+                                    <div className="overflow-x-auto">
+                                        <table className="table w-full lg:w-8/4">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Review</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    reviews && reviews.map(review => <ReviewItem key={review._id} review={review} handelDelete={handelDelete} />)
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                            }
+                        </div>
+                        <form onSubmit={handelReview} className='lg:w-4/12'>
+                            <textarea type="text" name='review' className="textarea textarea-accent w-full h-44" placeholder="Add Review" required></textarea> <br />
+                            <button type='submit' className="btn btn-success">add Review</button>
+                        </form>
+                    </div>
+                        :
+                        <div className='text-center'>
+                            <h2 className='text-emerald-700 font-extrabold text-xl md:text-2xl my-10'>Please login to add a review</h2>
+                            <Link to='/login' className='btn btn-outline btn-accent'>Login</Link>
+                        </div>
+                }
+
             </div>
         </div>
     );

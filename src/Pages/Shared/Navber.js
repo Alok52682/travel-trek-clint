@@ -15,10 +15,14 @@ const Navber = () => {
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
             } to='/services'>Services</NavLink></li>
-        <li className='font-semibold mr-3'><NavLink
+        {user?.uid && <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
-            } to='/addservice'>Add Service</NavLink></li>
+            } to='/addservice'>Add Service</NavLink></li>}
+        {user?.uid && <li className='font-semibold mr-3'><NavLink
+            className={({ isActive }) =>
+                isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'
+            } to='/myreview'>My Review</NavLink></li>}
         <li className='font-semibold mr-3'><NavLink
             className={({ isActive }) =>
                 isActive ? 'bg-emerald-500 text-white' : ' text-emerald-500'

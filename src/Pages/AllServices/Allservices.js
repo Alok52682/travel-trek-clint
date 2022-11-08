@@ -28,7 +28,7 @@ const Allservices = () => {
                                 </div>
                                 <div className="card-actions justify-between items-center mb-3">
                                     <p className='font-semibold text-emerald-600'>Charge: ${service.price}</p>
-                                    <Link to={`service/${service._id}`} className="btn btn-success">View details</Link>
+                                    <Link to={`../service/${service._id}`} className="btn btn-success">View details</Link>
                                 </div>
                             </div>
                         </div>

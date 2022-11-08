@@ -5,8 +5,10 @@ import Allservices from "../Pages/AllServices/Allservices";
 import ServiceDetails from "../Pages/AllServices/ServiceDetails";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
+import MyReview from "../Pages/MyReview/MyReview";
 import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/Shared/ErrorPage";
+import Private from "./Private/Private";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -29,6 +31,10 @@ const router = createBrowserRouter([{
         {
             path: '/addservice',
             element: <AddService />
+        },
+        {
+            path: '/myreview',
+            element: <Private><MyReview /></Private>
         },
         {
             path: '/login',
