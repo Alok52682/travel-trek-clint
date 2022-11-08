@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import toast from 'react-hot-toast';
+import { FaRegSave } from 'react-icons/fa';
 
 const AddService = () => {
     const handelAddService = event => {
@@ -14,7 +15,7 @@ const AddService = () => {
         // console.log(place);
 
         const service = { title, price, place, image, description };
-        fetch('http://localhost:4000/services', {
+        fetch('https://b6a11-service-review-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,7 +68,7 @@ const AddService = () => {
                                 <input className="bg-emerald-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name='description' placeholder='Description' required />
                             </div>
                             <div className="mt-8">
-                                <button type='submit' className="btn bg-emerald-500 border-none hover:bg-emerald-700 w-full rounded-xl">Add</button>
+                                <button type='submit' className="btn bg-emerald-500 border-none hover:bg-emerald-700 w-full rounded-xl">Add<FaRegSave className='ml-2' /></button>
                             </div>
                         </form>
                     </div>

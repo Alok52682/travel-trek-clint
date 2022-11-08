@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaArrowUp, FaArrowDown, FaTrash } from 'react-icons/fa';
 
-const MyReviewItem = ({ review, handelDelete, update }) => {
+const MyReviewItem = ({ review, handelDelete, update, up }) => {
     const { date, name, reaction, time, _id, serviceTitle, serviceiimage, } = review;
 
     return (
         <tr>
             <th>
                 <label>
-                    <button onClick={() => handelDelete(_id)} className='btn btn-error'>X</button>
+                    <button onClick={() => handelDelete(_id)} className='btn btn-error'><FaTrash /></button>
                 </label>
             </th>
             <td>
@@ -30,7 +31,7 @@ const MyReviewItem = ({ review, handelDelete, update }) => {
                 <span className="badge badge-ghost badge-sm">{name}</span>
             </td>
             <th>
-                <Link className='btn btn-ghost' onClick={() => update(review)} >update</Link>
+                <Link className='btn btn-ghost' onClick={() => update(review)} >update Popup {up ? <FaArrowUp className='ml-2' /> : <FaArrowDown className='ml-2' />} </Link>
             </th>
         </tr >
     );

@@ -9,10 +9,11 @@ const MyReview = () => {
     const [reviews, setReviews] = useState([]);
     const [show, setShow] = useState(false);
     const [review, setReview] = useState({});
-    const [refresh, setRefresh] = useState(false)
+    const [refresh, setRefresh] = useState(false);
+    const [up, setUp] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/reviews?email=${user?.email}`, {
+        fetch(`https://b6a11-service-review-server.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -32,7 +33,7 @@ const MyReview = () => {
     const handelDelete = id => {
         const agree = window.confirm('Are you sure you want to delete this review?');
         if (agree) {
-            fetch(`http://localhost:4000/reviews/${id}`, {
+            fetch(`https://b6a11-service-review-server.vercel.app/reviews/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
@@ -50,6 +51,7 @@ const MyReview = () => {
     const update = review => {
         setReview(review);
         setShow(!show);
+        setUp(!up)
     }
 
     const handelUpdate = (event, id) => {
@@ -58,7 +60,7 @@ const MyReview = () => {
         const text = event.target.text.value;
         const rev = { text };
         // console.log(rev);
-        fetch(`http://localhost:4000/reviews/${id}`, {
+        fetch(`https://b6a11-service-review-server.vercel.app/reviews/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -94,7 +96,7 @@ const MyReview = () => {
                         </thead>
                         <tbody>
                             {
-                                reviews && reviews.map(review => <MyReviewItem key={review._id} review={review} handelDelete={handelDelete} update={update} />)
+                                reviews && reviews.map(review => <MyReviewItem key={review._id} review={review} handelDelete={handelDelete} update={update} up={up} />)
                             }
                         </tbody>
 
@@ -103,7 +105,7 @@ const MyReview = () => {
             </div>
             {show && <form onSubmit={(e) => handelUpdate(e, review._id)} className='my-5'>
                 <input type="text" name='text' defaultValue={review?.reaction} placeholder="Type here" className="input input-bordered input-accent w-full max-w-xs" />
-                <button type='submit' className="btn btn-active btn-accent">Button</button>
+                <button type='submit' className="btn btn-active btn-accent m-2">Update</button>
             </form>}
 
         </div>
