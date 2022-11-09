@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaArrowUp, FaArrowDown, FaTrash } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 
-const MyReviewItem = ({ review, handelDelete, update, up }) => {
+const MyReviewItem = ({ review, handelDelete, update }) => {
     const { date, name, reaction, time, _id, serviceTitle, serviceiimage, } = review;
 
     return (
@@ -31,7 +30,7 @@ const MyReviewItem = ({ review, handelDelete, update, up }) => {
                 <span className="badge badge-ghost badge-sm">{name}</span>
             </td>
             <th>
-                <Link className='btn btn-ghost' onClick={() => update(review)} >update Popup {up ? <FaArrowUp className='ml-2' /> : <FaArrowDown className='ml-2' />} </Link>
+                <label onClick={() => update(review)} htmlFor="my-modal" className="btn btn-ghost">Update</label>
             </th>
         </tr >
     );

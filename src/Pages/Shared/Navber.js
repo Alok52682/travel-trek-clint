@@ -30,7 +30,7 @@ const Navber = () => {
 
     </>
     return (
-        <div className="navbar h-20 mb-12 pt-12 bg-base-100">
+        <div className="navbar h-20 mb-12 pt-12 bg-base-100 sticky z-10 top-0 py-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -55,10 +55,10 @@ const Navber = () => {
                     :
 
                     <>
-                        <Link onClick={handelLogOut} className='btn btn-ghost  text-emerald-500'>Log Out</Link>
-                        <li className='btn btn-outline btn-success'>
+                        <p className='btn btn-ghost  text-emerald-500'>
                             {user?.displayName}
-                        </li>
+                        </p>
+                        <Link onClick={handelLogOut} className='btn btn-ghost  text-emerald-500'>Log Out</Link>
 
                     </>
                 }
