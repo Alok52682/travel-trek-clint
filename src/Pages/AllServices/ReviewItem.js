@@ -1,6 +1,7 @@
 import React from 'react';
-
+// review item component
 const ReviewItem = ({ review }) => {
+
     const { date, name, reaction, time, userAvater } = review;
 
     return (

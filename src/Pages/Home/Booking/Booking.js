@@ -1,5 +1,6 @@
 import React from 'react';
 
+// booking section for home page
 const Booking = () => {
     return (
         <div className='my-10 rounded-3xl bg-emerald-500 text-center shadow-xl'>

@@ -8,6 +8,7 @@ const MyReviewItem = ({ review, handelDelete, update }) => {
         <tr>
             <th>
                 <label>
+                    {/* delete handler function calling */}
                     <button onClick={() => handelDelete(_id)} className='btn btn-error'><FaTrash /></button>
                 </label>
             </th>
@@ -30,6 +31,7 @@ const MyReviewItem = ({ review, handelDelete, update }) => {
                 <span className="badge badge-ghost badge-sm">{name}</span>
             </td>
             <th>
+                {/* modal button */}
                 <label onClick={() => update(review)} htmlFor="my-modal" className="btn btn-ghost">Update</label>
             </th>
         </tr >

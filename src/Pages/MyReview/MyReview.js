@@ -14,6 +14,7 @@ const MyReview = () => {
     useEffect(() => {
         fetch(`https://b6a11-service-review-server.vercel.app/reviews?email=${user?.email}`, {
             headers: {
+                // sending token to server by headers
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
@@ -30,6 +31,7 @@ const MyReview = () => {
             .catch(err => console.log(err))
     }, [user?.email, logOut, refresh]);
 
+    // delete review with fetch delete method by onclick handeler
     const handelDelete = id => {
         const agree = window.confirm('Are you sure you want to delete this review?');
         if (agree) {
@@ -48,9 +50,12 @@ const MyReview = () => {
         }
     }
 
+    // set review item id for update
     const update = review => {
         setReview(review);
     }
+
+    // update review by fetch update method by sunmit handler
 
     const handelUpdate = (event, id) => {
         event.preventDefault();
@@ -112,6 +117,7 @@ const MyReview = () => {
                     </table>
                 </div>
             </div>
+            {/* this is modal body for update review */}
             <input type="checkbox" id="my-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box">

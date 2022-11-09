@@ -17,6 +17,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        // call user login function
         userLogIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -25,6 +26,7 @@ const Login = () => {
                     email: user.email
                 }
                 console.log(currentUser);
+
                 // getting jwt token by fetch
                 fetch('https://b6a11-service-review-server.vercel.app/jwt', {
                     method: 'POST',
@@ -43,6 +45,7 @@ const Login = () => {
             .catch(err => alert(err.messege))
     }
 
+    // login with google by on click function
     const googleLogIn = () => {
         signWithGoogle()
             .then(result => {
@@ -70,6 +73,7 @@ const Login = () => {
             .catch(err => alert(err.messege))
     }
 
+    // getting email by on blur
     const handleEmailBlur = (event) => {
         const email = event.target.value;
         setEmail(email);

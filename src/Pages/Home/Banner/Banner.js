@@ -2,6 +2,7 @@ import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+// banner section for home page
 const Banner = () => {
     return (
         <div className='md:flex bg-emerald-200 p-10 items-center rounded-xl'>

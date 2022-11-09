@@ -2,6 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
+        // about section for home pase
         <div className='my-16 mx-5 text-center md:text-start'>
             <h2 className='font-extrabold text-2xl md:text-3xl text-orange-600'>WHAT I SERVE</h2>
             <div className='md:flex items-center md:ml-28 gap-16 mt-5'>

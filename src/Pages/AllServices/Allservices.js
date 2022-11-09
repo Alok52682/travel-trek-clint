@@ -7,6 +7,7 @@ const Allservices = () => {
     const [services, setServices] = useState();
     const [spinner, setSpinner] = useState(true);
 
+    // requesting data from server by use effect
     useEffect(() => {
         fetch('https://b6a11-service-review-server.vercel.app/services')
             .then(res => res.json())
@@ -21,6 +22,7 @@ const Allservices = () => {
             <Helmet>
                 <title>Travel trek - Services</title>
             </Helmet>
+            {/* using loader until load data */}
             <div className={`${spinner ? "block" : "hidden"} text-center mt-28`}>
                 <div role="status">
                     <svg className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

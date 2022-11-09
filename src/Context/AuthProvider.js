@@ -11,27 +11,28 @@ const AuthProvider = ({ children }) => {
 
     const googleProvider = new GoogleAuthProvider();
 
+    // google sign in
     const signWithGoogle = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
-
+    // create user with email & password
     const createUser = (email, pass) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, pass)
     }
-
+    // update user info
     const updateUser = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
     }
-
+    // login user with email & pass
     const userLogIn = (email, pass) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, pass)
     }
-
+    // forget password
     const handleForgetPass = (userEmail) => {
         if (!userEmail) {
             alert('Please enter your email!');
@@ -45,7 +46,7 @@ const AuthProvider = ({ children }) => {
                 console.log('error', error);
             })
     }
-
+    // log out
     const logOut = () => {
         localStorage.removeItem('token');
         return signOut(auth)
@@ -60,7 +61,7 @@ const AuthProvider = ({ children }) => {
         return () => unSubscribe();
     }, [])
 
-
+    // context values
     const authInfo = {
         user,
         loading,

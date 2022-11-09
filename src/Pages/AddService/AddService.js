@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { FaRegSave } from 'react-icons/fa';
 
 const AddService = () => {
+    // submit service info with onSubmit handler
     const handelAddService = event => {
         event.preventDefault();
         const form = event.target;
@@ -15,6 +16,7 @@ const AddService = () => {
         // console.log(place);
 
         const service = { title, price, place, image, description };
+        // transfer service info with fetch post method
         fetch('https://b6a11-service-review-server.vercel.app/services', {
             method: 'POST',
             headers: {
@@ -35,6 +37,7 @@ const AddService = () => {
     }
     return (
         <div>
+            {/* react helmet for show page titel on titelber */}
             <Helmet>
                 <title>Travel trek - Add Service</title>
             </Helmet>

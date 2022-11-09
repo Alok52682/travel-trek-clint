@@ -12,9 +12,9 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([]);
     const [render, setRender] = useState(false);
 
+    // uploading review by handelReview 
     const handelReview = e => {
         e.preventDefault();
-
         if (user?.uid) {
             const current = new Date();
             const time = current.getHours() + ':' + current.getMinutes() + ":" + current.getSeconds();
@@ -31,6 +31,7 @@ const ServiceDetails = () => {
                 time,
                 date
             }
+            // set review on tha database by post method
             fetch('https://b6a11-service-review-server.vercel.app/reviews/', {
                 method: 'POST',
                 headers: {
@@ -54,7 +55,7 @@ const ServiceDetails = () => {
         }
 
     }
-
+    // getting reviews from server by use effect
     useEffect(() => {
         fetch(`https://b6a11-service-review-server.vercel.app/reviews/${_id}`)
             .then(res => res.json())
@@ -106,6 +107,7 @@ const ServiceDetails = () => {
                                     </div>
                             }
                         </div>
+                        {/* conditional rendaring for login or add review */}
                         <form onSubmit={handelReview} className='lg:w-4/12'>
                             <textarea type="text" name='review' className="textarea textarea-accent w-full h-44" placeholder="Add Review" required></textarea> <br />
                             <button type='submit' className="btn btn-success">add Review</button>
