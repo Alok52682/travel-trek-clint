@@ -77,12 +77,12 @@ const Login = () => {
     return (
         <div>
             <Helmet>
-                <title>Travel treck - Log In</title>
+                <title>Travel trek - Log In</title>
             </Helmet>
             <div className='py-6'>
                 <div className="flex overflow-hidden mx-auto max-w-sm lg:max-w-4xl gap-4 items-center justify-center p-10">
                     <div className="w-full p-8 lg:w-1/2 border shadow-xl rounded-xl">
-                        <h2 className="text-2xl font-bold text-emerald-600 text-center">Travel track</h2>
+                        <h2 className="text-2xl font-bold text-emerald-600 text-center">Travel trek</h2>
                         <p className="text-xl text-gray-600 text-center">Welcome back!</p>
                         <Link onClick={googleLogIn} className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md bg-emerald-100">
                             <div className="md:px-4 py-3">

@@ -5,7 +5,7 @@ const Blogs = () => {
     return (
         <div className='w-10/12 mx-auto'>
             <Helmet>
-                <title>Travel treck - Blogs</title>
+                <title>Travel trek - Blogs</title>
             </Helmet>
             <div className='border-4 p-3 lg:p-10 border-emerald-400 rounded-2xl my-5'>
                 <div className='mb-4'>

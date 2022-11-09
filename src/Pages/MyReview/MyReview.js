@@ -78,7 +78,7 @@ const MyReview = () => {
     return (
         <div className='w-10/12 mx-auto'>
             <Helmet>
-                <title>Travel treck - My Reviews</title>
+                <title>Travel trek - My Reviews</title>
             </Helmet>
             <h2 className='text-emerald-700 font-extrabold text-2xl md:text-4xl text-center my-10'>MY Reviews : {reviews?.length}</h2>
             <div className="overflow-x-auto">

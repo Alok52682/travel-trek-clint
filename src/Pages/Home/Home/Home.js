@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <div className='md:w-10/12 mx-auto'>
             <Helmet>
-                <title>Travel treck - Home</title>
+                <title>Travel trek - Home</title>
             </Helmet>
             <Banner />
             <Services />

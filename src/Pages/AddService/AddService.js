@@ -36,7 +36,7 @@ const AddService = () => {
     return (
         <div>
             <Helmet>
-                <title>Travel treck - Add Service</title>
+                <title>Travel trek - Add Service</title>
             </Helmet>
             <div className='py-6'>
                 <div className="flex overflow-hidden mx-auto max-w-sm lg:max-w-4xl gap-4 items-center justify-center p-10">
