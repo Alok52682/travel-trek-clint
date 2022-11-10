@@ -6,7 +6,7 @@ import { authContext } from '../../Context/AuthProvider';
 
 const Login = () => {
     const { handleForgetPass, userLogIn, signWithGoogle } = useContext(authContext);
-    const location = useLocation()
+    const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
     const [email, setEmail] = useState('')
@@ -38,7 +38,7 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         localStorage.setItem('token', data.token);
-                        toast.success('Log in successfully')
+                        toast.success('Log in successfully');
                         navigate(from, { replace: true });
                     })
             })

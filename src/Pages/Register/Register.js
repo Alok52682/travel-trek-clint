@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
 
 const Register = () => {
 
     const { createUser, updateUser } = useContext(authContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const handelSignUp = event => {
         event.preventDefault();
@@ -18,6 +22,8 @@ const Register = () => {
         createUser(email, password).then(result => {
             updateUser(username, photoURL).then(() => console.log('profile Updated')).catch(err => console.log(err))
             console.log(result.user);
+            toast.success('Registration Successful.');
+            navigate(from, { replace: true });
             form.reset();
         })
             .catch(err => console.log(err))
@@ -35,7 +41,7 @@ const Register = () => {
                         <form onSubmit={handelSignUp}>
                             <div className="mt-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2">Username</label>
-                                <input className="bg-emerald-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name='name' placeholder='Username' />
+                                <input className="bg-emerald-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name='name' placeholder='Username' required />
                             </div>
                             <div className="mt-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2">PhotoURL</label>
