@@ -9,7 +9,6 @@ const MyReview = () => {
     const [reviews, setReviews] = useState([]);
     const [review, setReview] = useState({});
     const [refresh, setRefresh] = useState(false);
-    const [spinner, setSpinner] = useState(true);
 
     useEffect(() => {
         fetch(`https://b6a11-service-review-server.vercel.app/reviews?email=${user?.email}`, {
@@ -26,7 +25,6 @@ const MyReview = () => {
             })
             .then(data => {
                 setReviews(data);
-                setSpinner(false)
             })
             .catch(err => console.log(err))
     }, [user?.email, logOut, refresh]);
