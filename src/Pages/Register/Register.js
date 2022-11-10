@@ -19,13 +19,16 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        createUser(email, password).then(result => {
-            updateUser(username, photoURL).then(() => console.log('profile Updated')).catch(err => console.log(err))
-            console.log(result.user);
-            toast.success('Registration Successful.');
-            navigate(from, { replace: true });
-            form.reset();
-        })
+        createUser(email, password)
+            .then(result => {
+                updateUser(username, photoURL)
+                    .then(() => console.log('profile Updated'))
+                    .catch(err => console.log(err))
+                console.log(result.user);
+                toast.success('Registration Successful.');
+                navigate(from, { replace: true });
+                form.reset();
+            })
             .catch(err => console.log(err))
     }
     return (
