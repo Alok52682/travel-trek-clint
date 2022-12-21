@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -10,6 +10,14 @@ const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+    const [showSuggession, setShowSuggession] = useState(false);
+    const [enteredPassword, setEnteredPassword] = useState("");
+    const [passError, setPassError] = useState({
+        oneUpperCase: "At least one upper case",
+        oneDegit: "At least one digit",
+        oneSepcial: "At least one special character",
+        eightCharecters: "Please give atleast 8 charecter"
+    })
 
     const handelSignUp = event => {
         event.preventDefault();
@@ -17,7 +25,7 @@ const Register = () => {
         const username = form.name.value;
         const photoURL = form.photoURL.value;
         const email = form.email.value;
-        const password = form.password.value;
+        const password = enteredPassword;
 
         createUser(email, password)
             .then(result => {
@@ -29,8 +37,21 @@ const Register = () => {
                 navigate(from, { replace: true });
                 form.reset();
             })
-            .catch(err => console.log(err))
+            .catch(err => toast.error(err.message))
     }
+
+    const handelOnChangePassword = event => {
+        let pass = event.target.value;
+        setShowSuggession(true);
+        // this is for password validation
+        if (/^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(pass)) {
+            setPassError({ oneUpperCase: " ", oneDegit: " ", oneSepcial: " ", eightCharecters: " " });
+            setShowSuggession(false);
+        }
+        setEnteredPassword(pass);
+        pass = "";
+    }
+
     return (
         <div>
             <Helmet>
@@ -58,7 +79,15 @@ const Register = () => {
                                 <div className="flex justify-between">
                                     <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
                                 </div>
-                                <input className="bg-emerald-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name='password' placeholder='********' required />
+                                <input onChange={handelOnChangePassword} className="bg-emerald-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name='password' placeholder='********' required />
+                                <div className={showSuggession ? 'block' : 'hidden'}>
+                                    <ul>
+                                        <li><small>{passError.oneUpperCase}</small></li>
+                                        <li><small>{passError.oneDegit}</small></li>
+                                        <li><small>{passError.oneSepcial}</small></li>
+                                        <li><small>{passError.eightCharecters}</small></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div className="mt-8">
                                 <button type='submit' className="btn bg-emerald-500 border-none hover:bg-emerald-700 w-full rounded-xl">Register</button>

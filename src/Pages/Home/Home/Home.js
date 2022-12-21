@@ -4,6 +4,7 @@ import Banner from '../Banner/Banner';
 import Services from '../Services/Services';
 import Booking from '../Booking/Booking';
 import { Helmet } from 'react-helmet';
+import HappyClints from '../ClintsReview/HappyClints';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Services />
             <Booking />
             <About />
+            <HappyClints />
         </div>
     );
 };
