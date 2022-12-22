@@ -4,7 +4,7 @@ import { FaRegHeart, FaStar } from 'react-icons/fa';
 const HappyClints = () => {
     return (
         <div className='text-center w-10/12 mx-auto my-10'>
-            <h2 className='text-2xl md:text-5xl font-bold leading-tight mt-5'>Happy Clints</h2>
+            <h2 className='text-2xl md:text-5xl font-bold leading-tight mt-5 text-emerald-700'>Happy Clints</h2>
             <div className="divider w-1/2 my-10 mx-auto"><FaRegHeart className='text-5xl text-slate-400' /></div>
             <div className='md:flex gap-5 justify-around items-center mt-7 snap-x'>
                 <div className='border p-5 rounded-xl text-start md:w-96 h-[400px] relative'>

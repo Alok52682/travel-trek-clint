@@ -5,6 +5,7 @@ import Services from '../Services/Services';
 import Booking from '../Booking/Booking';
 import { Helmet } from 'react-helmet';
 import HappyClints from '../ClintsReview/HappyClints';
+import OfferSection from '../OfferSection/OfferSection';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <Services />
             <Booking />
             <About />
+            <OfferSection />
             <HappyClints />
         </div>
     );
